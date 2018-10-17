@@ -5,8 +5,8 @@ from pandas import read_csv
 # Create your models here.
 
 # print(os.getcwd())
-df = read_csv('H:/2018/django/wiset/HMP/data/W_중간결과_03.csv', engine='python', encoding='cp949')
-
+# df = read_csv('H:/2018/django/wiset/HMP/data/W_중간결과_03.csv', engine='python', encoding='cp949')
+df = read_csv('HMP/data/W_중간결과_03.csv', engine='python', encoding='cp949')
 df_stan = df[['ID', '주거형태', '위치', '주소', '이화여대시간', '연세대시간', '서강대시간',
             '보증금', '월세', '관리비', '전용면적', '편의시설점수',
             '실내환경설문', '실외환경설문', '주변편의설문', '공동시설설문', '환산비용']]
