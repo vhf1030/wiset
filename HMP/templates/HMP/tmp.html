@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--{% load staticfiles %}-->
+<html lang="ko">
+<head>
+  <title>dataset</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="//fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/lotto.css'%}">
+</head>
+
+<body>
+  <div class="page-header">
+  <!--<pre>{{datasets}}</pre>-->
+  <h1><a href="/home">Home</a></h1>
+  </div>
+
+  <div class="container select">
+
+    <form action="/action_page.php">
+      <input type="radio" name="gender" value="연세대"> 연세대<br>
+      <input type="radio" name="gender" value="이화여대"> 이화여대<br>
+      <input type="radio" name="gender" value="서강대"> 서강대<br>
+      <p>보 증 금&nbsp<input type="text" name="r1"> ~ <input type="text" name="r2"></p>
+      <p>월    세&nbsp<input type="text" name="r3"> ~ <input type="text" name="r4"></p>
+      <p>도보시간&nbsp<input type="text" name="r5"> ~ <input type="text" name="r6"></p>
+
+      <input type="submit" value="Submit">
+      </form>
+  </div>
+
+
+  <div class="container lotto">
+    <p> 오름차순으로 보기 : {% for col in columns %} <a href="/datasort/{{col}}&ascending">{{col}}</a> {% endfor %} </p>
+    <p> 내림차순으로 보기 : {% for col in columns %} <a href="/datasort/{{col}}&descending">{{col}}</a> {% endfor %} </p>
+
+    {% for key, value in datasets.items %}
+    <h2>{{key}}</h2><a href="/detail/{{key}}">link</a>
+
+    <!--<p> {{value}}</p>-->
+
+    <!--<p> {{k}}</p>-->
+    <p> {% for k, v in value.items %}/ {{v}} /{% endfor %} </p>
+
+    <!--<p> {{data.한우리집}}</p>-->
+    <!--<p> {{data.보증금}}</p>-->
+    <!--<p> {{data.values}}</p>-->
+
+    {% endfor %}
+  <!--
+  <h2>당첨 기원 (2)</h2>
+  <p> last update:2000/1/1</p>
+  <p> 1, 10, 15, 20, 30 </p>
+  -->
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--{% load staticfiles %}-->
+<html lang="ko">
+<head>
+  <title>dataset</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="//fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/lotto.css'%}">
+</head>
+
+<body>
+  <div class="page-header">
+  <!--<pre>{{datasets}}</pre>-->
+  <h1><a href="/home">Home</a></h1>
+  </div>
+
+  <div class="container select">
+
+    <form action="../filter/" method="get">
+
+      <p>보 증 금&nbsp<input type="text" name="r1" value = "0"> ~ <input type="text" name="r2" value = "10000"> 만원</p>
+      <p>월    세&nbsp<input type="text" name="r3" value = "0"> ~ <input type="text" name="r4" value = "50"> 만원</p>
+      <input type="radio" name="sc" value="ih" checked="checked"> 이화여대
+      <input type="radio" name="sc" value="ys"> 연세대
+      <input type="radio" name="sc" value="sg"> 서강대<br>
+      <p>도보시간&nbsp<input type="text" name="r5" value="0"> ~ <input type="text" name="r6" value="30"> 분</p>
+      <p>추가옵션 <br>
+      <input type="checkbox" name="o1" value="1" checked="checked"> 편의시설점수
+      <input type="checkbox" name="o2" value="1" checked="checked"> 실내환경설문
+      <input type="checkbox" name="o3" value="1" checked="checked"> 실외환경설문
+      <input type="checkbox" name="o4" value="1" checked="checked"> 주변편의설문
+      <input type="checkbox" name="o5" value="1" checked="checked"> 공동시설설문
+      <input type="checkbox" name="o6" value="1" checked="checked"> 환산비용</p>
+      <br>
+      <input type="submit" value="적용">
+    </form>
+  </div>
+
+
+  <div class="container data">
+
+    {% for key, value in datasets.items %}
+    <h2>{{key}}</h2><a href="/detail/{{key}}">link</a>
+
+    <p> {% for k, v in value.items %}/ {{v}} /{% endfor %} </p>
+
+    {% endfor %}
+
+  </div>
+</body>
+</html>
